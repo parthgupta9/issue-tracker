@@ -1,11 +1,15 @@
+'use client';
+
 import React from 'react'
 import Link from 'next/link';
 import { DiDropbox } from "react-icons/di";
-
-
+import { usePathname } from 'next/navigation';
 
 
 const Navbar = () => {
+
+    const currentPath = usePathname();
+
     const links = [
         {label:'Dashboard',href:'/' },
         {label:'Issues',href:'/issues'}
@@ -18,7 +22,7 @@ const Navbar = () => {
                 {links.map(link =>
                  <Link
                   key={link.href}
-                   className='text-xl text-zinc-600 hover:text-black font-medium' 
+                   className={`${link.href=== currentPath?'text-xl text-zinc-900':'text-xl text-zinc-500'}`}
                    href={link.href}
                  >{link.label}</Link>
                    
